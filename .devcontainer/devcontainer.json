@@ -1,0 +1,21 @@
+{
+  "name": "php-mysql-tmpl",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "workspace",
+  "forwardPorts": [8080],
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig"
+      ]
+    }
+  },
+  "features": {
+    "docker-from-docker": {
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
+    }
+  },
+  "postCreateCommand": "mkdir -p \"$(pwd)/public_html\" && chmod a+x \"$(pwd)/public_html\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)/public_html\" /var/www/html"
+}
